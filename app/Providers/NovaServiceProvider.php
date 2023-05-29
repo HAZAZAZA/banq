@@ -2,9 +2,17 @@
 
 namespace App\Providers;
 
+use App\Nova\Dashboards\Main;
+use App\Nova\Loan;
+use App\Nova\Project;
+use App\Nova\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Pktharindu\NovaPermissions\Nova\Role;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -16,6 +24,25 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::mainMenu(function (Request $request){
+            return[
+                MenuSection::dashboard(Main::class)->icon('chart-bar'),
+                MenuSection::make(__('Users'), [
+                    MenuItem::resource(User::class),
+                    MenuItem::resource(Role::class),
+                ])->icon('user')->collapsable(),
+
+                MenuSection::make(__('Projects'),[
+                    MenuItem::resource(Project::class)
+                ]),
+
+                MenuSection::make(__('Loans'),[
+                    MenuItem::resource(Loan::class)
+                ]),
+            ];
+
+        });
     }
 
     /**
@@ -66,7 +93,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new \Badinansoft\LanguageSwitch\LanguageSwitch(),
+            new \Pktharindu\NovaPermissions\NovaPermissions(),
+
+        ];
     }
 
     /**

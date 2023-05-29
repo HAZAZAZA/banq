@@ -40,7 +40,7 @@ return [
         'role_permission' => 'role_permission',
 
         'role_user' => 'role_user',
-        
+
         'users' => 'users',
     ],
 
@@ -98,5 +98,57 @@ return [
             'description'  => 'Can delete roles',
             'group'        => 'Role',
         ],
+
+
+        'view projects' => [
+            'display_name' => 'View projects',
+            'description'  => 'Can view projects',
+            'group'        => 'Project',
+        ],
+
+        'create projects' => [
+            'display_name' => 'Create projects',
+            'description'  => 'Can create projects',
+            'group'        => 'Project',
+        ],
+
+        'edit projects' => [
+            'display_name' => 'Edit projects',
+            'description'  => 'Can edit projects',
+            'group'        => 'Project',
+        ],
+
+        'delete projects' => [
+            'display_name' => 'Delete projects',
+            'description'  => 'Can delete projects',
+            'group'        => 'Project',
+        ],
+
+        // loans
+
+        'view loans' => [
+            'display_name' => 'View loans',
+            'description'  => 'Can view loans',
+            'group'        => 'Loan',
+        ],
+
+        'create loans' => [
+            'display_name' => 'Create loans',
+            'description'  => 'Can create loans',
+            'group'        => 'Loan',
+        ],
+
+        'edit loans' => [
+            'display_name' => 'Edit loans',
+            'description'  => 'Can edit loans',
+            'group'        => 'Loan',
+        ],
+
+        'delete loans' => [
+            'display_name' => 'Delete loans',
+            'description'  => 'Can delete loans',
+            'group'        => 'Loan',
+        ],
+
     ],
 ];

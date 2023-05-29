@@ -4,9 +4,11 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -51,6 +53,43 @@ class User extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            Text::make(__('First Name'), 'first_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('Last Name'), 'last_name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('Phone'), 'phone')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('Farmer card number'), 'farmer_card_number')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('Address'), 'address')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('City'), 'city')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make(__('State'), 'state')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Date::make(__('Birthday date'), 'birthday_date'),
+
+            Select::make(__('Gender'), 'gender')->options([
+                'male' => 'Male',
+                'female' => 'Female'
+            ]),
+
+
 
             Text::make('Email')
                 ->sortable()

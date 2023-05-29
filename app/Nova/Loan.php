@@ -82,7 +82,7 @@ class Loan extends Resource
             Number::make(__('TVA'), 'tva'),
             Number::make(__('Interest'),'interest'),
             File::make(__('File'), 'file')->disk('storage')->path('/uploads'),
-            BelongsTo::make(__('Project'), 'project')
+            BelongsTo::make( 'project')
 
         ];
     }
@@ -129,5 +129,21 @@ class Loan extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+
+    public static function label()
+    {
+        return __('Loans');
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Loan');
     }
 }

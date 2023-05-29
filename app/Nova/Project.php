@@ -59,7 +59,7 @@ class Project extends Resource
             Text::make(__('City'), 'city'),
             Text::make(__('State'), 'state'),
             Select::make(__('Ownership Type') , 'ownership_type'),
-            BelongsTo::make(__('User'), 'user'),
+            BelongsTo::make( 'user'),
             Date::make('created_at')->showOnIndex()->showOnDetail()
         ];
     }
@@ -107,4 +107,15 @@ class Project extends Resource
     {
         return [];
     }
+
+    public static function label()
+    {
+        return __('Projects');
+    }
+
+    public static function singularLabel()
+    {
+        return __('Project');
+    }
+
 }

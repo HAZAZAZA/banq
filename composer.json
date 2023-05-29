@@ -12,6 +12,8 @@
     ],
     "require": {
         "php": "^8.1",
+        "badinansoft/nova-language-switch": "^1.2",
+        "coderello/laravel-nova-lang": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/nova": "4.22.0",
