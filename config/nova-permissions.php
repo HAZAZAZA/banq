@@ -150,5 +150,24 @@ return [
             'group'        => 'Loan',
         ],
 
+        "make processing" => [
+            'display_name' => 'Make processing',
+            'description'  => 'Can make loans processing',
+            'group'        => 'Loan',
+        ],
+
+        "approved loan" => [
+            'display_name' => 'Approved loan',
+            'description'  => 'Can approve loans',
+            'group'        => 'Loan',
+        ],
+
+        "reject loan" => [
+            'display_name' => 'Reject loan',
+            'description'  => 'Can reject loans',
+            'group'        => 'Loan',
+        ],
+
+
     ],
 ];

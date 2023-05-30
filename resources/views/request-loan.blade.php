@@ -17,7 +17,7 @@
     <div class="container">
         <header>Registration</header>
 
-        <form action="/request-loan" method="POST">
+        <form action="/request-loan" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form first">
                 <div class="details personal">

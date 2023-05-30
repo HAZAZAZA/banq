@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoanController;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home2', function(){
-    return view('home2');
+Route::get('/home', function(){
+    return redirect()->to('/');
 });
+Route::get('/logout', function (Request $request){
+   \Illuminate\Support\Facades\Auth::logout();
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+   return redirect()->back('/');
+});
+
 Auth::routes();
 
 Route::get('/request-loan', function(){

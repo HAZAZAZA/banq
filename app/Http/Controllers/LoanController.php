@@ -61,14 +61,14 @@ class LoanController extends Controller
             $file = $request->file('file');
 
             // Store the file in the storage directory
-            $path = $file->store();
+            $path = $file->storeAs('public', $file->getClientOriginalName());
             $loan->file = $file->getClientOriginalName();
 
         }
 
         $loan->save();
 
-        return redirect()->back();
+        return redirect()->to('/');
     }
 
     /**

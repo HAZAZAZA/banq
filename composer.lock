@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b4908123e72e1f349696c97de42f966",
+    "content-hash": "18bdebba0eb8379ca20ec95e138350e6",
     "packages": [
         {
             "name": "badinansoft/nova-language-switch",
@@ -2517,6 +2517,60 @@
             "time": "2022-04-17T13:12:02+00:00"
         },
         {
+            "name": "lexicon/nova-action-button-selectors",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pitchayakit/nova-action-button-selector.git",
+                "reference": "f947ff23b7cc494e4ae6fc63c13e01468657ddef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pitchayakit/nova-action-button-selector/zipball/f947ff23b7cc494e4ae6fc63c13e01468657ddef",
+                "reference": "f947ff23b7cc494e4ae6fc63c13e01468657ddef",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "~4.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lexicon\\ActionButtonSelector\\AssetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lexicon\\ActionButtonSelector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pitchayakit Pahamak",
+                    "email": "pitchayakit.p@gmail.com",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "A Laravel Nova asset.",
+            "homepage": "https://pitchayakit.github.io/cv",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/pitchayakit/nova-action-button-selector/issues",
+                "source": "https://github.com/pitchayakit/nova-action-button-selector/tree/v1.2.1"
+            },
+            "time": "2022-12-26T04:55:05+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.3.1",
             "source": {
@@ -4024,6 +4078,69 @@
                 }
             ],
             "time": "2023-03-13T14:25:33+00:00"
+        },
+        {
+            "name": "sietse85/nova-button",
+            "version": "1.0.25",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sietse85/nova-button.git",
+                "reference": "515192a91c7b97a77bb8af928025768f6d915be1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sietse85/nova-button/zipball/515192a91c7b97a77bb8af928025768f6d915be1",
+                "reference": "515192a91c7b97a77bb8af928025768f6d915be1",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^4.0",
+                "php": "^7.4|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sietse85\\NovaButton\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sietse85\\NovaButton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sietse Sietsma",
+                    "email": "sietse85@gmail.com"
+                },
+                {
+                    "name": "Danique Wijnalda",
+                    "email": "hello@dnwjn.dev"
+                },
+                {
+                    "name": "Brian Dillingham",
+                    "email": "bdillingham88@gmail.com"
+                }
+            ],
+            "description": "(Nova 4+) A Laravel Nova package for adding buttons to your resources.",
+            "keywords": [
+                "button",
+                "field",
+                "laravel",
+                "nova",
+                "nova4"
+            ],
+            "support": {
+                "issues": "https://github.com/sietse85/nova-button/issues",
+                "source": "https://github.com/sietse85/nova-button/tree/v1.0.25"
+            },
+            "time": "2023-01-06T19:39:04+00:00"
         },
         {
             "name": "spatie/once",

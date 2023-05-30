@@ -8,17 +8,29 @@
     <title>BADR Bank</title>
   </head>
   <body>
-    <nav class="nav-bar" style="background-color: #085426;"> 
+    <nav class="nav-bar" style="background-color: #085426;">
       <img src="./images/logoimage.png" style=" height:100px "  alt="" />
       <div class="nav-items">
-        <a href="#">الصفحة الرئيسية</a>
+        <a href="/">الصفحة الرئيسية</a>
         <a href="#">حول</a>
-        <a href="login_logout\singuo_login.php">طلب قرض</a>
+        <a href="request-loan">طلب قرض</a>
         <a href="#">اتصل بنا</a>
-        
+
       </div>
-      <button > 
+      <button >
+          @guest
         <a  href="/login" >تسجيل الدخول</a>
+          @endguest
+          @auth
+                  <a href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                      {{ __('تسجيل الخروج') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              @endauth
       </button>
     </nav>
     <header class="hero-section">
@@ -46,7 +58,7 @@
         >
       </section>
       <section class="features-section">
-       
+
         <div class="feature-item">
           <img src="./images/icon-onboarding.svg" alt="" />
           <h1>الانضمام السريع</h1>
@@ -64,11 +76,11 @@
             >تهدف هذه الخدمات<br />
             إلى جعل معاملات العميل البنكية<br />
             ذات سهولة ومرونة <br />
-            بواسطة تبسيط التحكم في حسابات القرض عن بعد 
+            بواسطة تبسيط التحكم في حسابات القرض عن بعد
           </p>
         </div>
 
-       
+
         <div class="feature-item">
           <img src="./images/icon-online.svg" alt="" />
           <h1>خدمات عبر الانترنت</h1>

@@ -7,6 +7,7 @@ use App\Nova\Loan;
 use App\Nova\Project;
 use App\Nova\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
@@ -42,6 +43,19 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ]),
             ];
 
+        });
+
+        Nova::footer(function (){
+            return Blade::render('
+               <p class="mt-8 text-center text-xs text-80">
+                 <a href="https://badrbanque.dz" class="text-primary dim no-underline">تسيير القروض الفلاحية</a>
+                 <span class="px-1">&middot;</span>
+                   &copy; 2023
+                 <span class="px-1">&middot;</span>
+                 v1.0.0
+             </p>
+
+            ');
         });
     }
 

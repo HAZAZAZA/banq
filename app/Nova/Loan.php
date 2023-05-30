@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ApprovedLoan;
+use App\Nova\Actions\MakeLoanProcessing;
+use App\Nova\Actions\RejectLoan;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Currency;
@@ -22,6 +25,14 @@ class Loan extends Resource
      * @var class-string<\App\Models\Loan>
      */
     public static $model = \App\Models\Loan::class;
+
+
+
+    public function authorizedToUpdate(Request $request): bool
+    {
+        return true;
+       // return $request->user()->hasAnyPermission(['admin', 'edit loans']);
+    }
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -77,11 +88,12 @@ class Loan extends Resource
                     'yearly'=> 'yearly',
                 ]),
 
+
             Date::make(__('Loan start date'), 'loan_start_date'),
             Date::make(__('Loan end date'), 'loan_end_date'),
             Number::make(__('TVA'), 'tva'),
             Number::make(__('Interest'),'interest'),
-            File::make(__('File'), 'file')->disk('storage')->path('/uploads'),
+            File::make(__('File'), 'file'),
             BelongsTo::make( 'project')
 
         ];
@@ -128,7 +140,19 @@ class Loan extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            MakeLoanProcessing::make()->canSee(function (Request $request){
+                return $request->user()->hasPermissionTo('make processing');
+            }),
+
+            ApprovedLoan::make()->canSee(function (Request $request){
+                return $request->user()->hasPermissionTo('approved loan');
+            }),
+
+            RejectLoan::make()->canSee(function (Request $request){
+                return $request->user()->hasPermissionTo('reject loan');
+            }),
+        ];
     }
 
 
