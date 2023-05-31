@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('amoritzations', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->integer('rest');
-            $table->integer('amount');
+            $table->date('date')->nullable();
+            $table->integer('rest')->nullable();
+            $table->integer('amount')->nullable();
             $table->string('interest')->default(0);
-            $table->integer('total');
+            $table->integer('total')->nullable();
             $table->integer('taux')->nullable();
             $table->timestamps();
         });

@@ -28,11 +28,11 @@ class Loan extends Resource
 
 
 
-//    public function authorizedToUpdate(Request $request): bool
-//    {
-//        return false;
-//       // return $request->user()->hasAnyPermission(['admin', 'edit loans']);
-//    }
+    public function authorizedToUpdate(Request $request): bool
+    {
+        return true;
+       // return $request->user()->hasAnyPermission(['admin', 'edit loans']);
+    }
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -62,27 +62,38 @@ class Loan extends Resource
             ID::make()->sortable(),
             Currency::make(__('Amount'), 'amount')->symbol('DZD'),
             Status::make(__('Status'), 'status')
-                ->hideWhenUpdating(function ($request){
-                    return !$request->user()->isAdmin();
-                })
+                ->onlyOnIndex()
                 ->loadingWhen(['pending', 'processing'])
                 ->failedWhen(['rejected']),
-//            Select::make(__('Stataus'),'status')
-//                ->options([
-//                    'pending' => 'pending',
-//                    'processing' => 'processing',
-//                    'rejected' => 'rejected',
-//                    'approved' => 'approved',
-//                ])->onlyOnForms(),
+            Select::make(__('Status'),'status')
+                ->options([
+                    'pending' => 'pending',
+                    'processing' => 'processing',
+                    'rejected' => 'rejected',
+                    'approved' => 'approved',
+                ])->hideWhenUpdating(function ($request) {
+                    return !$request->user()->isAdmin() || !$request->user()->hasPermissionTo('edit loans');
+                }),
 
             Select::make(__('Type'),'type')
                 ->options([
                     'ETTAHADI' => 'ETTAHADI',
                     'RFIG' => 'RFIG',
-                ])->onlyOnForms(),
+                ])->onlyOnForms()
+                ->hideWhenUpdating(function ($request) {
+                    return !$request->user()->isAdmin() || !$request->user()->hasPermissionTo('edit loans');
+                }),
             Currency::make(__('Customer Deposit'), 'customer_deposit')
-                ->symbol('DZE'),
-            Text::make(__('Loan duration'), 'loan_duration'),
+                ->symbol('DZE')
+                ->hideWhenUpdating(function ($request) {
+                    return !$request->user()->isAdmin() || !$request->user()->hasPermissionTo('edit loans');
+                })
+            ,
+            Text::make(__('Loan duration'), 'loan_duration')
+                ->hideWhenUpdating(function ($request) {
+                    return !$request->user()->isAdmin() || !$request->user()->hasPermissionTo('edit loans');
+                })
+            ,
 
             Select::make(__('Periodicity'), 'periodicity')
                 ->options([

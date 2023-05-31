@@ -4,52 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="/css/HomeStyle.css" />
     <title>BADR Bank</title>
 </head>
 <body>
-<nav class="nav-bar" style="background-color: #085426;">
-    <img src="./images/logoimage.png" style=" height:100px "  alt="" />
-    <div class="nav-items">
-        <a href="/">الصفحة الرئيسية</a>
-        <a href="#">حول</a>
-        <a href="request-loan">طلب قرض</a>
-        <a href="#">اتصل بنا</a>
-
-
-    </div>
-    <div class="action">
-        <a href="#" id="logi-bt" class="header-action-btn" onclick="menuToggle();"> <img src="/images/user.png" width="60" height="50" ></a>
-        <div class="header-actions">
-
-            <div class="admin">
-                <div class="menu">
-                    <h3>
-                        حساب المستخدم
-                        <div>
-                            اهلا بك
-                        </div>
-                    </h3>
-                    <ul  dir="rtl" >
-                        <li>
-                            <img src="/images/edit.png" >
-                            <span class="material-icons icons-size"></span>
-                            <a href="user.php">تعديل المعلومات</a>
-                        </li>
-
-                        <img src="images/logout.png" >
-                        <span class="material-icons icons-size"></span>
-                        <a href="">تسجيل الخروج</a>
-                        </li>
-
-
-
-
-                    </ul>
-                </div>
-            </div>
-
-</nav>
+@include('components.header')
 <header class="hero-section">
     <div class="hero-text-container">
         <h1
@@ -60,7 +21,14 @@
         >تقدم بطلب قرض شخصي جديد عن طريق موقعنا<br />
             و استفد من خدماتنا التي تضمن لك الأمان والسرعة والخصوصية<br />قم بمتابعة قرضك اونلين.</p
         >
-        <button> اطلب قرضك الان</button>
+
+        <button>
+            <a href="/request-loan">
+                اطلب قرضك الان
+
+            </a>
+
+        </button>
     </div>
     <div class="hero-img-container">
         <img src="https://www.jeune-independant.net/wp-content/uploads/2020/08/arton23321.jpg" alt="" />
@@ -109,68 +77,68 @@
             </p>
         </div>
     </section>
-    <section class="blog-section">
-        <h1>أحدث المقالات</h1>
-        <div class="article-container">
-            <div class="article">
-                <img src="./images/image-currency.jpg" alt="" />
-                <div class="content">
-                    <p>Arslan Jajja</p>
-                    <h4
-                    >Recieve money in any<br />
-                        currency with no fees.</h4
-                    >
-                    <p
-                    >The world is getting smaller and<br />
-                        we are becoming more mobile.So,<br />
-                        why should you be forced to only<br />
-                        recieve money in a single...</p
-                    >
-                </div>
-            </div>
-            <div class="article">
-                <img src="./images/image-restaurant.jpg" alt="" />
-                <div class="content">
-                    <p>Arslan Jajja</p>
-                    <h4
-                    >Recieve money in any<br />
-                        currency with no fees.</h4
-                    >
-                    <p
-                    >Our simple budgeting feature<br />
-                        allow to seperate out your<br />
-                        spending and set realistic limits<br />
-                        each month.That means you...</p
-                    >
-                </div>
-            </div>
-            <div class="article">
-                <img src="./images/image-plane.jpg" alt="" />
-                <div class="content">
-                    <p>Arslan Jajja</p>
-                    <h4>Take Your Easybank card<br />whereever you go.</h4>
-                    <p
-                    >We want you to enjoy your travels.<br />This is why we don't
-                        charge any<br />fees on purchase while you're <br />abroad.We'll
-                        even show you...</p
-                    >
-                </div>
-            </div>
-            <div class="article">
-                <img src="./images/image-confetti.jpg" alt="" />
-                <div class="content">
-                    <p>Arslan Jajja</p>
-                    <h4>Our invite-only Beta<br />accounts are live now!</h4>
-                    <p
-                    >After a lot of hardwork by the<br />
-                        whole team,we're excited to launch<br />
-                        our closed beta.It's easy to request <br />an invite through the
-                        site.</p
-                    >
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="blog-section">--}}
+{{--        <h1>أحدث المقالات</h1>--}}
+{{--        <div class="article-container">--}}
+{{--            <div class="article">--}}
+{{--                <img src="./images/image-currency.jpg" alt="" />--}}
+{{--                <div class="content">--}}
+{{--                    <p>Arslan Jajja</p>--}}
+{{--                    <h4--}}
+{{--                    >Recieve money in any<br />--}}
+{{--                        currency with no fees.</h4--}}
+{{--                    >--}}
+{{--                    <p--}}
+{{--                    >The world is getting smaller and<br />--}}
+{{--                        we are becoming more mobile.So,<br />--}}
+{{--                        why should you be forced to only<br />--}}
+{{--                        recieve money in a single...</p--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="article">--}}
+{{--                <img src="./images/image-restaurant.jpg" alt="" />--}}
+{{--                <div class="content">--}}
+{{--                    <p>Arslan Jajja</p>--}}
+{{--                    <h4--}}
+{{--                    >Recieve money in any<br />--}}
+{{--                        currency with no fees.</h4--}}
+{{--                    >--}}
+{{--                    <p--}}
+{{--                    >Our simple budgeting feature<br />--}}
+{{--                        allow to seperate out your<br />--}}
+{{--                        spending and set realistic limits<br />--}}
+{{--                        each month.That means you...</p--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="article">--}}
+{{--                <img src="./images/image-plane.jpg" alt="" />--}}
+{{--                <div class="content">--}}
+{{--                    <p>Arslan Jajja</p>--}}
+{{--                    <h4>Take Your Easybank card<br />whereever you go.</h4>--}}
+{{--                    <p--}}
+{{--                    >We want you to enjoy your travels.<br />This is why we don't--}}
+{{--                        charge any<br />fees on purchase while you're <br />abroad.We'll--}}
+{{--                        even show you...</p--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="article">--}}
+{{--                <img src="./images/image-confetti.jpg" alt="" />--}}
+{{--                <div class="content">--}}
+{{--                    <p>Arslan Jajja</p>--}}
+{{--                    <h4>Our invite-only Beta<br />accounts are live now!</h4>--}}
+{{--                    <p--}}
+{{--                    >After a lot of hardwork by the<br />--}}
+{{--                        whole team,we're excited to launch<br />--}}
+{{--                        our closed beta.It's easy to request <br />an invite through the--}}
+{{--                        site.</p--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 </div>
 <footer class="footer">
     <div class="footer-container">

@@ -9,50 +9,7 @@
     <title>BADR Bank</title>
 </head>
 <body>
-<nav class="nav-bar" style="background-color: #085426;">
-    <img src="./images/logoimage.png" style=" height:100px "  alt="" />
-    <div class="nav-items">
-        <a href="/">الصفحة الرئيسية</a>
-        <a href="#">حول</a>
-        <a href="request-loan">طلب قرض</a>
-        <a href="#">اتصل بنا</a>
-
-
-    </div>
-    <div class="action">
-        <a href="#" id="logi-bt" class="header-action-btn" onclick="menuToggle();"> <img src="/images/user.png" width="60" height="50" ></a>
-        <div class="header-actions">
-
-            <div class="admin">
-                <div class="menu">
-                    <h3>
-                        حساب المستخدم
-                        <div>
-                            اهلا بك
-                        </div>
-                    </h3>
-                    <ul  dir="rtl" >
-                        <li>
-                            <img src="/images/edit.jpg" >
-                            <span class="material-icons icons-size"></span>
-                            <a href="/profile">تعديل المعلومات</a>
-                        </li>
-
-                        <img src="images/logout.png" >
-                        <span class="material-icons icons-size"></span>
-                        <a href="">تسجيل الخروج</a>
-                        </li>
-
-
-
-
-                    </ul>
-                </div>
-            </div>
-
-</nav>
-
-
+@include('components.header')
 
 <main>
     <article>
@@ -267,7 +224,7 @@
                 <button>اطلب قرضك الان</button>
             </div>
         </footer>
-        </script>
+    </article>
 
 
 

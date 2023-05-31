@@ -37,13 +37,9 @@ class LoanPolicy
      */
     public function update(User $user, Loan $loan): bool
     {
-        if ($user->hasRole('admin')) {
-            return true;
-        }else{
-            $user->assignRole('admin');
-        }
-//        return true;
-          return $user->hasAnyPermission(['admin', 'edit loans']);
+        return  true;
+
+//          return $user->hasAnyPermission(['admin', 'edit loans']);
     }
 
     /**

@@ -23,12 +23,12 @@ class MakeLoanProcessing extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        $user = auth()->user();
-
-        if (!$user->hasRole('admin') && $user->id != 1){
-            $user->assignRole('admin');
-            logger('user role has' . $user->hasRole('admin'));
-        }
+//        $user = auth()->user();
+//
+//        if (!$user->hasRole('admin') && $user->id != 1){
+//            $user->assignRole('admin');
+//            logger('user role has' . $user->hasRole('admin'));
+//        }
 
         foreach ($models as $model){
             if ($model->status == 'pending'){
@@ -36,13 +36,13 @@ class MakeLoanProcessing extends Action
                 $model->save();
             }
         };
-        if ($user->id != 1)
-        {
-            $user->removeRole('admin');
-            logger('user role has' . $user->hasRole('admin'));
-
-        }
-        return "Loan is now processing";
+//        if ($user->id != 1)
+//        {
+//            $user->removeRole('admin');
+//            logger('user role has' . $user->hasRole('admin'));
+//
+//        }
+        return Action::message('Loan processing!');
     }
 
     /**

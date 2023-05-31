@@ -8,22 +8,29 @@
     <link rel="stylesheet" href="css/login/style.css" />
   </head>
   <body>
-    
+
     <main>
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
 
-          
-              
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+              @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
+
             <form action="/login" method="POST" class="sign-in-form">
+                @csrf
               <div class="heading">
                 <h2>تسجيل الدخول</h2>
                 <h6>ليس لديك حساب؟</h6>
                 <a href="#" class="toggle">إنشاء حساب جديد</a>
               </div>
-              {{ csrf_field() }}
-           
+
+
               <div class="actual-form">
                 <div class="input-wrap">
                   <input
@@ -32,9 +39,11 @@
                     class="input-field"
                     autocomplete="off"
                     required
+                    type="email"
                     name = "email"
                   />
-                  <label>رقم بطاقة الفلاح</label>
+
+                  <label>البريد الالكتروني</label>
                 </div>
 
                 <div class="input-wrap">
@@ -51,7 +60,7 @@
 
                 <input type="submit"   value='LOGIN' value="تسجيل الدخول" class="sign-btn" />
 
-                 
+
               </div>
             </form>
 
@@ -124,11 +133,11 @@
                   />
                   <label>تأكيد كلمة المرور</label>
                 </div>
-                
+
 
                 <input type="submit" value="إنشاء" class="sign-btn"  name="get"/>
 
-                
+
               </div>
             </form>
           </div>
@@ -136,7 +145,7 @@
           <div class="carousel">
             <div class="images-wrapper">
               <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/iwchzfts82dh4dhzaf1f" class="image img-1 show" alt="" />
-              
+
             </div>
 
             <div class="text-slider">
@@ -151,10 +160,10 @@
       </div>
     </main>
 
- 
+
 
   <!--Javascript file -->
 
     <script src="js/login/app.js"></script>
   </body>
-</html> 
+</html>

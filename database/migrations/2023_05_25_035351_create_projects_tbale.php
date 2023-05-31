@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->enum('type',[
                 'Acquisition of the necessary inputs related to the activity of agricultural investments (seeds, seedlings, fertilizers, pesticides)',
                 'Livestock feed _ irrigation means _ veterinary medicine products',
                 'Reconstitution of farms (chicks, laying hens)',
                 'Breeding large animals for fattening (bulls, sheep, camels)'
-            ]);
+            ])->nullable();
             $table->string('suraface')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();

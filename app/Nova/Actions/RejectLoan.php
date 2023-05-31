@@ -23,24 +23,24 @@ class RejectLoan extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
-        $user = auth()->user();
-//        dd($user->hasRole('admin'));
-        $admin = true;
-        if (!$user->hasRole('admin')){
-            $admin = false;
-            $user->assignRole('admin');
-        }
+//        $user = auth()->user();
+////        dd($user->hasRole('admin'));
+//        $admin = true;
+//        if (!$user->hasRole('admin')){
+//            $admin = false;
+//            $user->assignRole('admin');
+//        }
         foreach ($models as $model){
             if ($model->status == 'processing'){
                 $model->status = "rejected";
                 $model->save();
             }
         };
-        if (!$admin)
-        {
-            $user->removeRole('admin');
-            $user->save();
-        }
+//        if (!$admin)
+//        {
+//            $user->removeRole('admin');
+//            $user->save();
+//        }
         return Action::message('Loan rejected!');
     }
 

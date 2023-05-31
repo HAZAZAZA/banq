@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
-            $table->enum('status', ['pending', 'processing', 'approved', 'rejected']);
-            $table->enum('type',['ETTAHADI', 'RFIG']);
-            $table->integer('customer_deposit');
-            $table->integer('loan_duration');
-            $table->enum('periodicity',['trimester', 'semester', 'yearly']);
+            $table->integer('amount')->nullable();
+            $table->enum('status', ['pending', 'processing', 'approved', 'rejected'])->default('pending');
+            $table->enum('type',['ETTAHADI', 'RFIG'])->nullable();
+            $table->integer('customer_deposit')->nullable();
+            $table->integer('loan_duration')->nullable();
+            $table->enum('periodicity',['trimester', 'semester', 'yearly'])->nullable();
             $table->date('loan_start_date')->nullable();
             $table->date('loan_end_date')->nullable();
             $table->string("tva")->default('19');
