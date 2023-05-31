@@ -155,7 +155,7 @@ form .buttons button , .backBtn{
         overflow-y: scroll;
     }
     .container form::-webkit-scrollbar{
-       display: none;
+        display: none;
     }
     form .fields .input-field{
         width: calc(100% / 2 - 15px);

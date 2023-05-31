@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Amortization extends Model
 {
     use HasFactory;
+    protected $table = 'amoritzations';
     public function loan(){
         return $this->belongsTo(Loan::class);
     }

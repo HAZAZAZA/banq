@@ -14,6 +14,6 @@ class Loan extends Model
     }
 
     public function amoritizations(){
-        return $this->hasMany(Amoritization::class);
+        return $this->hasMany(Amortization::class);
     }
 }

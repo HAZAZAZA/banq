@@ -28,11 +28,11 @@ class Loan extends Resource
 
 
 
-    public function authorizedToUpdate(Request $request): bool
-    {
-        return true;
-       // return $request->user()->hasAnyPermission(['admin', 'edit loans']);
-    }
+//    public function authorizedToUpdate(Request $request): bool
+//    {
+//        return false;
+//       // return $request->user()->hasAnyPermission(['admin', 'edit loans']);
+//    }
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -62,15 +62,18 @@ class Loan extends Resource
             ID::make()->sortable(),
             Currency::make(__('Amount'), 'amount')->symbol('DZD'),
             Status::make(__('Status'), 'status')
+                ->hideWhenUpdating(function ($request){
+                    return !$request->user()->isAdmin();
+                })
                 ->loadingWhen(['pending', 'processing'])
                 ->failedWhen(['rejected']),
-            Select::make(__('Stataus'),'status')
-                ->options([
-                    'pending' => 'pending',
-                    'processing' => 'processing',
-                    'rejected' => 'rejected',
-                    'approved' => 'approved',
-                ])->onlyOnForms(),
+//            Select::make(__('Stataus'),'status')
+//                ->options([
+//                    'pending' => 'pending',
+//                    'processing' => 'processing',
+//                    'rejected' => 'rejected',
+//                    'approved' => 'approved',
+//                ])->onlyOnForms(),
 
             Select::make(__('Type'),'type')
                 ->options([
@@ -142,15 +145,15 @@ class Loan extends Resource
     {
         return [
             MakeLoanProcessing::make()->canSee(function (Request $request){
-                return $request->user()->hasPermissionTo('make processing');
+                return $request->user()->hasPermissionTo('make processing') && $this->status == 'pending';
             }),
 
             ApprovedLoan::make()->canSee(function (Request $request){
-                return $request->user()->hasPermissionTo('approved loan');
+                return $request->user()->hasPermissionTo('approved loan') && $this->status == 'processing';
             }),
 
             RejectLoan::make()->canSee(function (Request $request){
-                return $request->user()->hasPermissionTo('reject loan');
+                return $request->user()->hasPermissionTo('reject loan') && $this->status == 'processing';
             }),
         ];
     }
